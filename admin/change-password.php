@@ -17,7 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirmPassword = $_POST['confirm_password'] ?? '';
     
     // Cek data lengkap ga
-    if (empty($oldPassword) || empty($newPassword) || empty($confirmPassword)) {
+    if (!verifyMathCaptcha($_POST['captcha_input'] ?? '')) {
+        $error = 'Captcha salah!';
+    } else if (empty($oldPassword) || empty($newPassword) || empty($confirmPassword)) {
         $error = 'Semua field harus diisi!';
     } else if ($newPassword !== $confirmPassword) {
         $error = 'Password baru dan konfirmasi password tidak cocok!';
@@ -38,6 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 include "templates/header.php";
+
+$captcha_question = generateMathCaptcha();
 ?>
 
 <div class="content-header">
@@ -121,6 +125,16 @@ include "templates/header.php";
                   <button type="button" class="btn-toggle-password" onclick="togglePassword('confirm_password', this)" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; padding: 5px;">
                     <i class="fas fa-eye" style="color: #FF4F9D; font-size: 1.2rem;"></i>
                   </button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Pertanyaan Keamanan *</label>
+                <div class="d-flex align-items-center">
+                   <div class="px-3 py-2 text-center bg-light border rounded" style="min-width: 100px;">
+                      <span style="font-weight: bold;"><?= $captcha_question ?></span>
+                   </div>
+                   <input type="number" name="captcha_input" class="form-control ml-3" placeholder="Hitung hasilnya" required style="max-width: 150px;">
                 </div>
               </div>
 

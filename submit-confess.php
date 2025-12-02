@@ -1,9 +1,16 @@
 <?php
 
 require_once "function.php";
+startSession();
 
 $isi      = $_POST['isi'] ?? '';
 $kategori = $_POST['kategori'] ?? '';
+$captcha_input = $_POST['captcha_input'] ?? '';
+
+if (!verifyMathCaptcha($captcha_input)) {
+    header("Location: form-confess.php?error=captcha");
+    exit;
+}
 
 // Cek ada isinya ga
 if ($isi) {

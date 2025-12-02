@@ -22,7 +22,6 @@
 - 👥 **Multi-Admin System** - Sistem persetujuan admin oleh superadmin
 - 📦 **Product Management** - Kelola produk merchandise
 
-
 ## 🛠️ Teknologi yang Digunakan
 
 - **Backend**: PHP Native
@@ -319,6 +318,14 @@ Aplikasi menggunakan **pink theme** sebagai warna utama dengan beberapa komponen
 
 ## 🆕 Changelog
 
+### Version 2.3 - 03 Dec 2025
+
+- 🔒 **FEATURE**: **Captcha Matematika** - Keamanan tambahan untuk menghindari spam pada:
+  - Form Confess
+  - Form Order Merchandise
+  - Ganti Password Admin
+  - Ganti Username Superadmin
+
 ### Version 2.2 - 02 Dec 2025
 
 - 🔄 **UPDATE**: Perubahan kredensial default Superadmin
@@ -361,14 +368,14 @@ Aplikasi menggunakan **pink theme** sebagai warna utama dengan beberapa komponen
 
 ## 👨‍💻 Tim Pengembang
 
-| No | Nama | NIM | Role | GitHub |
-|---|---|---|---|---|
-| 1 | Yosua Valentino Gulo | 251402055 | 🚀 Project Leader, Fullstack Dev | [@yopalll](https://github.com/yopalll) |
-| 2 | Muhammad Vasha Nadar | 251402019 | 🎨 UI/UX Dev | - |
-| 3 | Rodotua Naomi Mutiara Simamora | 251402030 | 📚 Dokumentasi & Asset Creator | - |
-| 4 | Muhammad Kevin Ramadhan | 251402013 | 🔧 Helper | - |
-| 5 | Ray Nathan Saragih | 251402046 | 🔧 Helper | - |
-| 6 | Naufal Awan Harahap | 251402145 | 🔧 Helper | - |
+| No  | Nama                           | NIM       | Role                             | GitHub                                 |
+| --- | ------------------------------ | --------- | -------------------------------- | -------------------------------------- |
+| 1   | Yosua Valentino Gulo           | 251402055 | 🚀 Project Leader, Fullstack Dev | [@yopalll](https://github.com/yopalll) |
+| 2   | Muhammad Vasha Nadar           | 251402019 | 🎨 UI/UX Dev                     | -                                      |
+| 3   | Rodotua Naomi Mutiara Simamora | 251402030 | 📚 Dokumentasi & Asset Creator   | -                                      |
+| 4   | Muhammad Kevin Ramadhan        | 251402013 | 🔧 Helper                        | -                                      |
+| 5   | Ray Nathan Saragih             | 251402046 | 🔧 Helper                        | -                                      |
+| 6   | Naufal Awan Harahap            | 251402145 | 🔧 Helper                        | -                                      |
 
 **Repository**: [tifess](https://github.com/yopalll/tifess)
 

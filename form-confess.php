@@ -5,11 +5,15 @@ session_start();
 
 include "templates/header.php";
 
+
 $nomorBaru = generateNomorConfess();
 
 $success = $_GET['success'] ?? '';
 $error = $_GET['error'] ?? '';
 $nomorConfess = $_GET['nomor'] ?? '';
+
+// panggil math captcha
+$captcha_question = generateMathCaptcha();
 ?>
 
 <div class="container py-5 fade-in" style="max-width: 750px; min-height: 75vh;">
@@ -53,6 +57,119 @@ $nomorConfess = $_GET['nomor'] ?? '';
       </div>
     </div>
   <?php endif; ?>
+
+  <?php if (isset($_GET['error']) && $_GET['error'] == 'captcha'): ?>
+    <div class="alert alert-warning border-0 shadow-sm scale-up" style="border-radius: 15px; border-left: 5px solid #FFC107;">
+      <div class="d-flex align-items-center">
+        <i class="fas fa-exclamation-triangle me-3" style="font-size: 1.5rem;"></i>
+        <div>
+          <strong style="display: block;">Captcha Salah!</strong>
+          <small>Silakan masukkan kode keamanan yang benar.</small>
+        </div>
+      </div>
+    </div>
+  <?php endif; ?>
+
+  <style>
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  @keyframes slideInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .slide-in-down {
+    animation: slideInDown 0.6s ease-out;
+  }
+
+  .accordion-button:not(.collapsed) {
+    background: linear-gradient(135deg, rgba(255, 79, 157, 0.08), rgba(140, 82, 255, 0.08));
+    color: #FF4F9D;
+  }
+
+  .accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 79, 157, 0.15);
+  }
+
+  body.dark-mode .accordion-item {
+    background: #1f1f1f;
+    border: 1px solid #333 !important;
+  }
+
+  body.dark-mode .accordion-button {
+    background: #1f1f1f;
+    color: #FFB6D9;
+  }
+
+  body.dark-mode .accordion-button:not(.collapsed) {
+    background: #2a2a2a;
+    color: #ff4f9d;
+  }
+
+  body.dark-mode .accordion-body {
+    background: #1f1f1f;
+    color: #e0e0e0;
+    border-color: #333 !important;
+  }
+
+  @media (max-width: 768px) {
+    .confess-form-card:hover,
+    .check-status-card:hover {
+      transform: translateY(-4px) !important;
+    }
+
+    .card-body.p-md-5 {
+      padding: 1.5rem !important;
+    }
+
+    .btn-lg.w-100 {
+      font-size: 14px;
+    }
+
+    .check-status-card .input-group {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .check-status-card .input-group input.form-control {
+      flex: 1 1 100%;
+      border-radius: 12px !important;
+      border: 2px solid #E8D5E8 !important;
+      min-height: 48px;
+      margin-bottom: 12px;
+    }
+
+    .check-status-card .input-group button.btn {
+      flex: 1 1 100%;
+      border-radius: 12px !important;
+      min-height: 48px;
+    }
+  }
+
+  @media (max-width: 991px) and (min-width: 769px) {
+    .check-status-card .input-group input.form-control {
+      min-height: 46px;
+    }
+
+    .check-status-card .input-group button.btn {
+      min-height: 46px;
+      padding: 12px 20px;
+    }
+  }
+</style>
 
   
   <div class="card border-0 shadow-sm scale-up confess-form-card" style="border-radius: 20px; overflow: hidden; transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-12px)'; this.style.boxShadow='0 20px 50px rgba(255, 79, 157, 0.25)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)';">
@@ -102,6 +219,19 @@ Message : "
             <option value="Random">🎲 Random</option>
           </select>
           <small class="text-muted mt-2 d-block">Pilih kategori yang sesuai agar confess kamu lebih tertarget</small>
+        </div>
+
+        <div class="form-group mb-4">
+          <label class="form-label" style="color: #FF4F9D; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">
+            <i class="fas fa-calculator me-2"></i> Pertanyaan Keamanan <span style="color: #FF4F9D;">*</span>
+          </label>
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <div style="padding: 0 16px; text-align: center; background: #f8f9fa; border: 2px solid #E8D5E8; border-radius: 12px; flex-shrink: 0; width: 160px; height: 50px; display: flex; align-items: center; justify-content: center;">
+              <span style="font-size: 1.25rem; font-weight: 800; color: #555;"><?= $captcha_question ?></span>
+            </div>
+            <input type="number" name="captcha_input" class="form-control" placeholder="Hasilnya berapa?" required style="border-radius: 12px; border: 2px solid #E8D5E8; font-weight: 500; height: 50px; flex: 1;">
+          </div>
+          <small class="text-muted mt-2 d-block">Jawab pertanyaan di atas untuk membuktikan kamu bukan robot</small>
         </div>
 
         
@@ -204,105 +334,6 @@ Message : "
 
 </div>
 
-<style>
-  @keyframes shimmer {
-    0% {
-      background-position: -1000px 0;
-    }
-    100% {
-      background-position: 1000px 0;
-    }
-  }
 
-  @keyframes slideInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .slide-in-down {
-    animation: slideInDown 0.6s ease-out;
-  }
-
-  .accordion-button:not(.collapsed) {
-    background: linear-gradient(135deg, rgba(255, 79, 157, 0.08), rgba(140, 82, 255, 0.08));
-    color: #FF4F9D;
-  }
-
-  .accordion-button:focus {
-    box-shadow: 0 0 0 0.25rem rgba(255, 79, 157, 0.15);
-  }
-
-  body.dark-mode .accordion-item {
-    background: #1f1f1f;
-    border: 1px solid #333 !important;
-  }
-
-  body.dark-mode .accordion-button {
-    background: #1f1f1f;
-    color: #FFB6D9;
-  }
-
-  body.dark-mode .accordion-button:not(.collapsed) {
-    background: #2a2a2a;
-    color: #ff4f9d;
-  }
-
-  body.dark-mode .accordion-body {
-    background: #1f1f1f;
-    color: #e0e0e0;
-    border-color: #333 !important;
-  }
-
-  @media (max-width: 768px) {
-    .confess-form-card:hover,
-    .check-status-card:hover {
-      transform: translateY(-4px) !important;
-    }
-
-    .card-body.p-md-5 {
-      padding: 1.5rem !important;
-    }
-
-    .btn-lg.w-100 {
-      font-size: 14px;
-    }
-
-    .check-status-card .input-group {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .check-status-card .input-group input.form-control {
-      flex: 1 1 100%;
-      border-radius: 12px !important;
-      border: 2px solid #E8D5E8 !important;
-      min-height: 48px;
-      margin-bottom: 12px;
-    }
-
-    .check-status-card .input-group button.btn {
-      flex: 1 1 100%;
-      border-radius: 12px !important;
-      min-height: 48px;
-    }
-  }
-
-  @media (max-width: 991px) and (min-width: 769px) {
-    .check-status-card .input-group input.form-control {
-      min-height: 46px;
-    }
-
-    .check-status-card .input-group button.btn {
-      min-height: 46px;
-      padding: 12px 20px;
-    }
-  }
-</style>
 
 <?php include "templates/footer.php"; ?>

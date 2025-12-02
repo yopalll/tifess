@@ -21,11 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $buyerName = trim($_POST['buyer_name'] ?? '');
     $buyerPhone = trim($_POST['buyer_phone'] ?? '');
     $deliveryMethod = $_POST['delivery_method'] ?? '';
-    $buyerAddress = trim($_POST['buyer_address'] ?? '');
-    $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
-
     // Cek input data bener ga
-    if (empty($buyerName) || empty($buyerPhone)) {
+    if (!verifyMathCaptcha($_POST['captcha_input'] ?? '')) {
+        $error = 'Jawaban keamanan (captcha) salah!';
+    }
+    elseif (empty($buyerName) || empty($buyerPhone)) {
         $error = 'Nama dan nomor telepon harus diisi!';
     }
     elseif (empty($deliveryMethod)) {
@@ -106,6 +106,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 include "templates/header.php";
+
+$captcha_question = generateMathCaptcha();
 ?>
 
 <div class="container py-5 fade-in" style="max-width: 850px;">
@@ -319,6 +321,19 @@ include "templates/header.php";
                 <h4 class="mb-0 fw-bold" style="color: #FF4F9D;">
                   <span id="totalPrice">Rp <?= number_format($product['price'], 0, ',', '.') ?></span>
                 </h4>
+              </div>
+
+            </div>
+
+            <div class="form-group mb-4">
+              <label class="form-label text-pink fw-bold">
+                <i class="fas fa-calculator me-1"></i> Pertanyaan Keamanan <span style="color: #FF4F9D;">*</span>
+              </label>
+              <div class="d-flex align-items-center gap-3">
+                 <div class="px-4 py-2 text-center" style="background: #f8f9fa; border: 2px solid #E8D5E8; border-radius: 12px; min-width: 120px;">
+                    <span style="font-size: 1.25rem; font-weight: 800; color: #555;"><?= $captcha_question ?></span>
+                 </div>
+                 <input type="number" name="captcha_input" class="form-control" placeholder="Hasilnya berapa?" required style="border-radius: 12px; border: 2px solid #E8D5E8; font-weight: 500; height: 50px;">
               </div>
             </div>
 

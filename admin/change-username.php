@@ -22,8 +22,10 @@ $success = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $newUsername = trim($_POST['new_username'] ?? '');
     
-    // Cek input bener ga
-    if (empty($newUsername)) {
+    // Cek input bener
+    if (!verifyMathCaptcha($_POST['captcha_input'] ?? '')) {
+        $error = 'Captcha salah!';
+    } else if (empty($newUsername)) {
         $error = 'Username baru tidak boleh kosong!';
     } else if (strlen($newUsername) < 4) {
         $error = 'Username minimal 4 karakter!';
@@ -45,6 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 include "templates/header.php";
+
+$captcha_question = generateMathCaptcha();
 ?>
 
 <div class="content-header">
@@ -92,6 +96,17 @@ include "templates/header.php";
                 <label>Username Baru *</label>
                 <input type="text" name="new_username" class="form-control" required minlength="4" placeholder="Masukkan username baru">
                 <small class="text-muted">Hanya huruf, angka, strip (-), dan underscore (_). Min 4 karakter.</small>
+
+              </div>
+
+              <div class="form-group">
+                <label>Pertanyaan Keamanan *</label>
+                <div class="d-flex align-items-center">
+                   <div class="px-3 py-2 text-center bg-light border rounded" style="min-width: 100px;">
+                      <span style="font-weight: bold;"><?= $captcha_question ?></span>
+                   </div>
+                   <input type="number" name="captcha_input" class="form-control ml-3" placeholder="Hitung hasilnya" required style="max-width: 150px;">
+                </div>
               </div>
 
               <div class="form-group">

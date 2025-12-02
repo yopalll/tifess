@@ -8,8 +8,7 @@ date_default_timezone_set('Asia/Jakarta');
 error_reporting(0);
 ini_set('display_errors', 0);
 
-// error_reporting(E_ALL);
-// ini_set('display_errors', 1);
+
 
 // Settingan Database - Localhost
 $host     = "localhost";
@@ -440,4 +439,20 @@ function changeSuperAdminUsername($userId, $newUsername) {
     return mysqli_query($conn, $query);
 }
 
+
+
+function generateMathCaptcha() {
+    startSession();
+    $angka1 = rand(1, 10);
+    $angka2 = rand(1, 10);
+    $_SESSION['captcha_answer'] = $angka1 + $angka2;
+    return "$angka1 + $angka2 = ?";
+}
+
+function verifyMathCaptcha($input) {
+    startSession();
+    $answer = $_SESSION['captcha_answer'] ?? 0;
+    
+    return isset($input) && intval($input) === intval($answer);
+}
 
