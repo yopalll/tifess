@@ -1,0 +1,244 @@
+/* ============================================
+   DARK MODE THEME
+   ============================================ */
+
+body.dark-mode {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #e0e0e0;
+}
+
+/* Containers and Cards */
+body.dark-mode .card,
+body.dark-mode .login-card,
+body.dark-mode .register-card {
+  background: #1f1f1f;
+  border-color: #333;
+  color: #e0e0e0;
+}
+
+body.dark-mode .card-header {
+  background: #2a2a2a !important;
+  border-color: #444;
+  color: #fff !important;
+}
+
+body.dark-mode .card-body {
+  background: #1f1f1f;
+  color: #e0e0e0;
+}
+
+/* Forms and Inputs */
+body.dark-mode .form-control,
+body.dark-mode .input-group-text {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+body.dark-mode .form-control:focus {
+  background: #333;
+  border-color: #ff4f9d;
+  color: #fff;
+  box-shadow: 0 0 0 0.2rem rgba(255, 79, 157, 0.25);
+}
+
+body.dark-mode .input-group-text {
+  background: #333;
+  border-color: #444;
+  color: #999;
+}
+
+/* Buttons */
+body.dark-mode .btn-pink {
+  background: #ff4f9d;
+  border-color: #ff4f9d;
+  color: #fff;
+}
+
+body.dark-mode .btn-pink:hover {
+  background: #ff3687;
+  border-color: #ff3687;
+}
+
+body.dark-mode .btn-outline-pink {
+  background: transparent;
+  border-color: #ff4f9d;
+  color: #ff4f9d;
+}
+
+body.dark-mode .btn-outline-pink:hover {
+  background: #ff4f9d;
+  border-color: #ff4f9d;
+  color: #fff;
+}
+
+/* Text Colors */
+body.dark-mode .text-muted {
+  color: #999 !important;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+  color: #e0e0e0;
+}
+
+/* Links */
+body.dark-mode a {
+  color: #ff4f9d;
+}
+
+body.dark-mode a:hover {
+  color: #ff3687;
+}
+
+/* Alerts */
+body.dark-mode .alert {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+body.dark-mode .alert-success {
+  background: #1a4d2e;
+  border-color: #2d6a4f;
+  color: #a3dfa3;
+}
+
+body.dark-mode .alert-danger {
+  background: #4d1a1a;
+  border-color: #6a2d2d;
+  color: #dfa3a3;
+}
+
+body.dark-mode .alert-warning {
+  background: #4d3d1a;
+  border-color: #6a542d;
+  color: #dfc3a3;
+}
+
+/* Badges */
+body.dark-mode .badge {
+  background: #444;
+  color: #e0e0e0;
+}
+
+body.dark-mode .badge-secondary {
+  background: #555;
+  color: #fff;
+}
+
+/* Navbar & Navigation */
+body.dark-mode nav,
+body.dark-mode .navbar {
+  background: #1f1f1f !important;
+  border-color: #333;
+}
+
+body.dark-mode .nav-link {
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode .nav-link:hover {
+  color: #ff4f9d !important;
+}
+
+body.dark-mode .nav-link::after {
+  background: linear-gradient(90deg, #ff4f9d, #a370ff);
+}
+
+/* Footer */
+body.dark-mode footer,
+body.dark-mode .footer {
+  background: #1f1f1f;
+  border-color: #333;
+  color: #999;
+}
+
+/* Tables */
+body.dark-mode table {
+  color: #e0e0e0;
+}
+
+body.dark-mode .table {
+  background: #1f1f1f;
+}
+
+body.dark-mode .table thead th {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+body.dark-mode .table td {
+  background: #1f1f1f;
+  border-color: #333;
+  color: #e0e0e0;
+}
+
+body.dark-mode .table-hover tbody tr:hover {
+  background: #2a2a2a;
+}
+
+/* Product Cards */
+body.dark-mode .product-card {
+  background: #1f1f1f;
+  border-color: #333;
+}
+
+body.dark-mode .product-card:hover {
+  background: #2a2a2a;
+  box-shadow: 0 5px 20px rgba(255, 79, 157, 0.3);
+}
+
+/* Code blocks */
+body.dark-mode code {
+  background: #2a2a2a;
+  color: #ff4f9d;
+  border-color: #444;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+  background: #444;
+}
+
+.dark-mode-toggle .icon {
+  font-size: 16px;
+}
+
+body.dark-mode .dark-mode-toggle {
+  background: #ff4f9d;
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+  background: #ff3687;
+}
+
+/* Smooth transitions */
+body,
+.card,
+.form-control,
+.btn,
+.alert,
+.navbar,
+.table {
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
