@@ -21,6 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $buyerName = trim($_POST['buyer_name'] ?? '');
     $buyerPhone = trim($_POST['buyer_phone'] ?? '');
     $deliveryMethod = $_POST['delivery_method'] ?? '';
+    $buyerAddress = trim($_POST['buyer_address'] ?? '');
+    $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
+
     // Cek input data bener ga
     if (!verifyMathCaptcha($_POST['captcha_input'] ?? '')) {
         $error = 'Jawaban keamanan (captcha) salah!';
@@ -325,6 +328,7 @@ $captcha_question = generateMathCaptcha();
 
             </div>
 
+            <!-- CAPTCHA -->
             <div class="form-group mb-4">
               <label class="form-label text-pink fw-bold">
                 <i class="fas fa-calculator me-1"></i> Pertanyaan Keamanan <span style="color: #FF4F9D;">*</span>
