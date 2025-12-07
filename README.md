@@ -22,6 +22,7 @@
 - 👥 **Multi-Admin System** - Sistem persetujuan admin oleh superadmin
 - 📦 **Product Management** - Kelola produk merchandise
 
+
 ## 🛠️ Teknologi yang Digunakan
 
 - **Backend**: PHP Native
@@ -358,11 +359,20 @@ Aplikasi menggunakan **pink theme** sebagai warna utama dengan beberapa komponen
 - 🔍 Status tracking
 - 👨‍💼 Basic admin panel
 
-## 👨‍💻 Kontributor
+## 👨‍💻 Tim Pengembang
 
-- **Maintainer**: [@yopalll](https://github.com/yopalll)
-- **Repository**: [tifess](https://github.com/yopalll/tifess)
-- **Team**: Kelompok 6 ProWeb KOMA 25 TI USU
+| No | Nama | NIM | Role | GitHub |
+|---|---|---|---|---|
+| 1 | Yosua Valentino Gulo | 251402055 | 🚀 Project Leader, Fullstack Dev | [@yopalll](https://github.com/yopalll) |
+| 2 | Muhammad Vasha Nadar | 251402019 | 🎨 UI/UX Dev | - |
+| 3 | Rodotua Naomi Mutiara Simamora | 251402030 | 📚 Dokumentasi & Asset Creator | - |
+| 4 | Muhammad Kevin Ramadhan | 251402013 | 🔧 Helper | - |
+| 5 | Ray Nathan Saragih | 251402046 | 🔧 Helper | - |
+| 6 | Naufal Awan Harahap | 251402145 | 🔧 Helper | - |
+
+**Repository**: [tifess](https://github.com/yopalll/tifess)
+
+**Team**: Kelompok 6 ProWeb KOMA 25 TI USU
 
 ## 📞 Support & Contact
 
