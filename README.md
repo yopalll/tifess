@@ -45,7 +45,6 @@ tifess-01/
 ├── register.php             # Halaman registrasi admin
 ├── logout.php               # Proses logout
 ├── function.php             # Fungsi-fungsi utama
-├── gen_hash.php             # Tool generate password hash
 ├── README.md                # File ini
 │
 ├── admin/                   # Panel admin
